@@ -1,8 +1,0 @@
-rm -f 24-gifs
-
-cat << 'EOF' > 24-gifs
-#!/bin/bash
-LC_ALL=C find . -type f -name "*.gif" -printf "%f\n" | rev | cut -d. -f2- | rev | LC_ALL=C sort -f
-EOF
-
-chmod u+x 24-gifs
