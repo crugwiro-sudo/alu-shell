@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c1 | tr -d '\n' | awk '{print $0}'
+cut -c1 | tr -d '\n' | xargs echo

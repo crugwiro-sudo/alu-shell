@@ -1,0 +1,18 @@
+rm -f 24-gifs 25-acrostic 26-the_biggest_fan
+
+cat << 'EOF' > 24-gifs
+#!/bin/bash
+find . -type f -name "*.gif" -printf "%f\n" | rev | cut -d. -f2- | rev | sort -f
+EOF
+
+cat << 'EOF' > 25-acrostic
+#!/bin/bash
+cut -c1 | tr -d '\n' | xargs echo
+EOF
+
+cat << 'EOF' > 26-the_biggest_fan
+#!/bin/bash
+tail -n +2 | cut -f1 | sort | uniq -c | sort -rn | head -n 11 | tr -s ' ' | cut -d' ' -f3
+EOF
+
+chmod u+x 24-gifs 25-acrostic 26-the_biggest_fan
