@@ -1,5 +1,12 @@
+rm -f 17-water_and_stir
+
+cat << 'EOF' > 17-water_and_stir
 #!/bin/bash
 VAL1=$(echo $WATER | tr 'water' '01234')
 VAL2=$(echo $STIR | tr 'stir.' '01234')
 SUM=$((5#$VAL1 + 5#$VAL2))
 printf "%o\n" "$SUM" | tr '01234567' 'bestchol'
+EOF
+
+chmod u+x 17-water_and_stir
+
