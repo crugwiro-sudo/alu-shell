@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Loops indefinitely and handles incoming SIGTERM intercept safely
+trap 'echo "I am invincible!!!"' SIGTERM
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done

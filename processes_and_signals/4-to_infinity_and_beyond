@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Loops indefinitely to output a standard phrase
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done

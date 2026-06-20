@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2009
+# Displays lines containing the bash word to isolate shell PIDs
+ps auxf | grep bash

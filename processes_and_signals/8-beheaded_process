@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Explicitly terminates 7-highlander with a harsh kill signal
+pkill -9 -f 7-highlander
