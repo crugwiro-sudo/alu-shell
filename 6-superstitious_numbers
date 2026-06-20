@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Loops 1 to 20 displaying bad luck exceptions using case
+# This script displays numbers from 1 to 20
 i=1
 while [ $i -le 20 ]
 do

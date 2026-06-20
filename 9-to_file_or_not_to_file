@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Gives information about a specific file passed via command line or defaults to school
-FILE=${1:-school}
+# This script gives information about the school file
+FILE=$1
 if [ -e "$FILE" ]
 then
     echo "$FILE file exists"

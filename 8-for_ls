@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Displays current directory list showing only part after first dash
+# This script displays the content of the current directory
 for file in *
 do
     if [ -f "$file" ]; then
