@@ -3,7 +3,7 @@ cd ~/alu-shell/loops_conditions_and_parsing && \
 cat << 'EOF' > 1-for_best_school
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times
-for ((i=0; i<10; i++))
+for i in {1..10}
 do
     echo "Best School"
 done
@@ -13,8 +13,8 @@ chmod +x 1-for_best_school && \
 cat << 'EOF' > 2-while_best_school
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times
-i=0
-while [ $i -lt 10 ]
+i=1
+while [ $i -le 10 ]
 do
     echo "Best School"
     i=$((i + 1))
@@ -25,8 +25,8 @@ chmod +x 2-while_best_school && \
 cat << 'EOF' > 3-until_best_school
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times
-i=0
-until [ $i -eq 10 ]
+i=1
+until [ $i -gt 10 ]
 do
     echo "Best School"
     i=$((i + 1))
@@ -121,8 +121,8 @@ cat << 'EOF' > 8-for_ls
 # Displays current directory list showing only part after first dash
 for file in *
 do
-    if [ "$file" != "*" ]; then
-        echo "${file#*-}"
+    if [ -f "$file" ]; then
+        echo "$file" | cut -d'-' -f2-
     fi
 done
 EOF
@@ -130,8 +130,8 @@ chmod +x 8-for_ls && \
 # --- Task 8: To file, or not to file ---
 cat << 'EOF' > 9-to_file_or_not_to_file
 #!/usr/bin/env bash
-# Gives information about the school file
-FILE="school"
+# Gives information about a specific file passed via command line or defaults to school
+FILE=${1:-school}
 if [ -e "$FILE" ]
 then
     echo "$FILE file exists"
@@ -177,7 +177,7 @@ chmod +x 10-fizzbuzz && \
 cat << 'EOF' > 11-read_and_cut
 #!/usr/bin/env bash
 # Displays username, user id, and home directory from /etc/passwd
-while IFS=: read -r user pass uid gid info home shell
+while IFS=: read -r user pass uid gid info home shell || [ -n "$user" ]
 do
     echo "${user}:${uid}:${home}"
 done < /etc/passwd
@@ -187,7 +187,7 @@ chmod +x 11-read_and_cut && \
 cat << 'EOF' > 12-tell_the_story_of_passwd
 #!/usr/bin/env bash
 # Displays content of /etc/passwd in a story format
-while IFS=: read -r user pass uid gid info home shell
+while IFS=: read -r user pass uid gid info home shell || [ -n "$user" ]
 do
     echo "The user ${user} is part of the ${gid} gang, lives in ${home} and rides ${shell}. ${uid}'s place is protected by the passcode ${pass}, more info about the user here: ${info}"
 done < /etc/passwd
@@ -209,5 +209,5 @@ EOF
 chmod +x 14-dig_the-data && \
 # --- Git Deployment Stage ---
 git add . && \
-git commit -m "feat: complete loops conditions and parsing assignment tasks" && \
+git commit -m "feat: complete shell assignment matching strict autograder format specs" && \
 git push origin main
